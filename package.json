@@ -1,0 +1,128 @@
+{
+  "name": "plugin-demo",
+  "displayName": "plugin-demo",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "adrien",
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "plugin-demo",
+      "properties": {
+        "vscodePluginDemo.yourName": {
+          "type": "string",
+          "default": "guest",
+          "description": "adrien"
+        },
+        "vscodePluginDemo.showTip": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否在每次启动时显示欢迎提示！"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "plugin-demo.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "plugin-demo.catCoding",
+        "title": "cat coding"
+      },
+      {
+        "command": "plugin-demo.editText",
+        "title": "editText"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "plugin-demo.helloWorld",
+        "key": "ctrl+f10",
+        "mac": "cmd+f10",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "plugin-demo.catCoding",
+        "key": "ctrl+f11",
+        "mac": "cmd+f11",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "plugin-demo.editText",
+        "key": "ctrl+f12",
+        "mac": "cmd+f12",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == javascript",
+          "command": "plugin-demo.helloWorld",
+          "group": "2_plugin-demo@2"
+        },
+        {
+          "when": "resourceLangId == typescript",
+          "command": "plugin-demo.editText",
+          "group": "2_plugin-demo@2"
+        },
+        {
+          "when": "editorFocus",
+          "command": "plugin-demo.catCoding",
+          "group": "2_plugin-demo@1"
+        }
+      ]
+    },
+    "iconThemes": [
+      {
+        "id": "turtles",
+        "label": "Turtles",
+        "path": "./iconTheme/icon-theme.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run test-compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.56.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "14.x",
+    "eslint": "^7.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0",
+    "ts-loader": "^8.0.14",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  }
+}

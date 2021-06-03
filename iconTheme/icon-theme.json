@@ -1,0 +1,8 @@
+{
+    "iconDefinitions": {
+		"_file_light": {
+			"iconPath": "../images/icon.png"
+        }
+    },
+    "file": "_file_light"
+}
